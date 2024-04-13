@@ -86,14 +86,14 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(new.id), str)
 
     def test_created_at(self):
-        """ """
+        """this test is for verifying if created_at variable has dateTime type """
         new = self.value()
         self.assertEqual(type(new.created_at), datetime.datetime)
 
     def test_updated_at(self):
-        """ """
+        """this test verifies if creation date and update date is the same"""
         new = self.value()
         self.assertEqual(type(new.updated_at), datetime.datetime)
         n = new.to_dict()
         new = BaseModel(**n)
-        self.assertFalse(new.created_at == new.updated_at)
+        self.assertFalse(new.created_at != new.updated_at)
