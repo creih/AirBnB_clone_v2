@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-""" """
-from models.base_model import BaseModel
+"""this module includes all the tests for this whole project repo"""
+import os
 import unittest
 import datetime
-from uuid import UUID
 import json
-import os
+from uuid import UUID
+from models.base_model import BaseModel
 
 
 class test_basemodel(unittest.TestCase):
-    """ """
+    """this is the test class"""
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """this is the initialisation of the class"""
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
         self.value = BaseModel
 
     def setUp(self):
-        """ """
+        """this is a building block for all other tests"""
         pass
 
     def tearDown(self):
@@ -28,19 +28,19 @@ class test_basemodel(unittest.TestCase):
             pass
 
     def test_default(self):
-        """ """
+        """this is a default test not doing much really if not nothing"""
         i = self.value()
         self.assertEqual(type(i), self.value)
 
     def test_kwargs(self):
-        """ """
+        """testing the key word arrguments."""
         i = self.value()
         copy = i.to_dict()
         new = BaseModel(**copy)
         self.assertFalse(new is i)
 
     def test_kwargs_int(self):
-        """ """
+        """testing the integers in kargs"""
         i = self.value()
         copy = i.to_dict()
         copy.update({1: 2})
@@ -57,31 +57,31 @@ class test_basemodel(unittest.TestCase):
             self.assertEqual(j[key], i.to_dict())
 
     def test_str(self):
-        """ """
+        """testing the string variables"""
         i = self.value()
         self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id,
                          i.__dict__))
 
     def test_todict(self):
-        """ """
+        """testing the dictionary"""
         i = self.value()
         n = i.to_dict()
         self.assertEqual(i.to_dict(), n)
 
     def test_kwargs_none(self):
-        """ """
+        """testing for some kwargs"""
         n = {None: None}
         with self.assertRaises(TypeError):
             new = self.value(**n)
 
     def test_kwargs_one(self):
-        """ """
+        """testing keys in kwargs"""
         n = {'Name': 'test'}
         with self.assertRaises(KeyError):
             new = self.value(**n)
 
     def test_id(self):
-        """ """
+        """tesing the ids of recorded info"""
         new = self.value()
         self.assertEqual(type(new.id), str)
 
