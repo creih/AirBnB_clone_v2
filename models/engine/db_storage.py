@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 this is task 6 making the alchemy storage
-and will be replacing filestorage
+and will e replacing filestorage
 """
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
