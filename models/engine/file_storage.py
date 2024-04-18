@@ -9,6 +9,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.review import Review
 
+
 class FileStorage:
     """This class manages storge of hbnb models in JSON format"""
     __file_path = 'file.json'
@@ -33,7 +34,10 @@ class FileStorage:
     def save(self):
         """Saves storage dictionary to file"""
         with open(FileStorage.__file_path, 'w') as f:
-            serialized_objects = {key: obj.to_dict() for key, obj in self.__objects.items()}
+            serialized_objects = {
+                key: obj.to_dict() for key,
+                obj in self.__objects.items()
+                }
             json.dump(serialized_objects, f)
 
     def reload(self):

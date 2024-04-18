@@ -17,12 +17,12 @@ class DBStorage:
     def __init__(self):
         """initialisation of class"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
-                                            getenv('HBNB_MYSQL_USER'),
-                                             getenv('HBNB_MYSQL_PWD'),
-                                             getenv('HBNB_MYSQL_HOST'),
-                                             getenv('HBNB_MYSQL_DB'),
-                                             pool_pre_ping=True)
-                                            )
+            getenv('HBNB_MYSQL_USER'),
+            getenv('HBNB_MYSQL_PWD'),
+            getenv('HBNB_MYSQL_HOST'),
+            getenv('HBNB_MYSQL_DB'),
+            pool_pre_ping=True)
+            )
 
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
@@ -58,5 +58,7 @@ class DBStorage:
     def reload(self):
         """Loads storage dictionary from file"""
         Base.metadata.create_all(self.__engine)
-        self.__session = scoped_session(sessionmaker(bind=self.__engine,
-                                                      expire_on_commit=False))()
+        self.__session = scoped_session(
+            sessionmaker(bind=self.__engine,
+            expire_on_commit=False)
+            )()
