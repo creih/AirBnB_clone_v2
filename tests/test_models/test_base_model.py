@@ -22,10 +22,8 @@ class test_basemodel(unittest.TestCase):
         pass
 
     def tearDown(self):
-        try:
-            os.remove('file.json')
-        except:
-            pass
+        """testing the tear func"""
+        os.remove('file.json')
 
     def test_default(self):
         """this is a default test not doing much really if not nothing"""
@@ -86,7 +84,7 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(new.id), str)
 
     def test_created_at(self):
-        """this test is for verifying if created_at variable has dateTime type """
+        """this test is verifying if created_at variable has dateTime type """
         new = self.value()
         self.assertEqual(type(new.created_at), datetime.datetime)
 

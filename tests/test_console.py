@@ -11,24 +11,34 @@ from models.amenity import Amenity
 from models.review import Review
 from models.__init__ import storage
 
-class TestHBNBCommand(unittest.TestCase):
 
+class TestHBNBCommand(unittest.TestCase):
+    """this is the tests class for our console"""
     def setUp(self):
         self.console = HBNBCommand()
 
     def test_create(self):
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('create')
-            self.assertEqual('** class name missing **\n', mock_out.getvalue())
+            self.assertEqual(
+                    '** class name missing **\n',
+                    mock_out.getvalue()
+                    )
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('create MyModel')
-            self.assertEqual('** class doesn\'t exist **\n', mock_out.getvalue())
+            self.assertEqual(
+                    '** class doesn\'t exist **\n',
+                    mock_out.getvalue()
+                    )
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('create BaseModel')
             self.assertEqual('\n', mock_out.getvalue())
-            self.assertIsInstance(storage.all()["BaseModel." + mock_out.getvalue().strip()], BaseModel)
+            self.assertIsInstance(
+                    storage.all()["BaseModel." + mock_out.getvalue().strip()],
+                    BaseModel
+                    )
 
     def test_show(self):
         storage._FileStorage__objects = {}
@@ -40,11 +50,17 @@ class TestHBNBCommand(unittest.TestCase):
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('show MyModel')
-            self.assertEqual('** class doesn\'t exist **\n', mock_out.getvalue())
+            self.assertEqual(
+                    '** class doesn\'t exist **\n',
+                    mock_out.getvalue()
+                    )
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('show BaseModel')
-            self.assertEqual('** instance id missing **\n', mock_out.getvalue())
+            self.assertEqual(
+                    '** instance id missing **\n',
+                    mock_out.getvalue()
+                    )
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('show BaseModel {}'.format(bm.id))
@@ -60,15 +76,22 @@ class TestHBNBCommand(unittest.TestCase):
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('destroy MyModel')
-            self.assertEqual('** class doesn\'t exist **\n', mock_out.getvalue())
+            self.assertEqual(
+                    '** class doesn\'t exist **\n',
+                    mock_out.getvalue()
+                    )
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('destroy BaseModel')
-            self.assertEqual('** instance id missing **\n', mock_out.getvalue())
+            self.assertEqual(
+                    '** instance id missing **\n',
+                    mock_out.getvalue()
+                    )
 
         with patch('sys.stdout', new=StringIO()) as mock_out:
             self.console.onecmd('destroy BaseModel {}'.format(bm.id))
             self.assertNotIn(bm, storage.all().values())
+
 
 if __name__ == "__main__":
     unittest.main()
