@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-this module resolves task 1 per requirements more details in the readme file
+this module resolves task 1 per requirements more details in the readme file.
 """
 from flask import Flask
 
@@ -11,6 +11,7 @@ app = Flask(__name__)
 def murugo():
     """ this is my home function for task 0. """
     return 'Hello HBNB!'
+
 
 @app.route('/hbnb', strict_slashes=False)
 def muhanda_1():
