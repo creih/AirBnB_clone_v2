@@ -46,6 +46,14 @@ def umubare(n):
     return '{} is a number'.format(n)
 
 
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def umubare_temp(n):
+    """
+    task 5 isaba ku displayinga n kuri html template.
+    """
+    return render_template('5-number.html', number=n)
+
+
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def odd_even(n):
     """
