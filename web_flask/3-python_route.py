@@ -28,7 +28,7 @@ def muhanda_2(text):
     return 'C {}'.format(under_replace)
 
 
-@app.route('/python', defaults={'text': 'is_cool'})
+@app.route('/python', defaults={'text': 'is_cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
 def muhanda_3(text):
     """
