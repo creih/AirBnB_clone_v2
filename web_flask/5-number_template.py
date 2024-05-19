@@ -1,6 +1,4 @@
-#!/usr/bin/python3
-"""
-this module resolves task 1 per requirements more details in the readme file.
+s module resolves task 1 per requirements more details in the readme file.
 """
 from flask import Flask, render_template
 
@@ -36,14 +34,6 @@ def muhanda_3(text):
     """
     under_replace = text.replace('_', ' ')
     return 'Python {}'.format(under_replace)
-
-
-@app.route('/number/<int:n>', strict_slashes=False)
-def umubare(n):
-    """
-    task 4 ireba niba n ari integer then it prints it.
-    """
-    return '{} is a number'.format(n)
 
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
