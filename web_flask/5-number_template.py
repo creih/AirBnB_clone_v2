@@ -46,7 +46,7 @@ def umubare(n):
     return '{} is a number'.format(n)
 
 
-@app.route('/number/<int:n>', strict_slashes=False)
+@app.route('/number_template/<int:n>', strict_slashes=False)
 def umubare_temp(n):
     """
     task 5 isaba ku displayinga n kuri html template.
