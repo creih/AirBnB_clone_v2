@@ -2,7 +2,7 @@
 """
 this module resolves task 1 per requirements more details in the readme file.
 """
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
