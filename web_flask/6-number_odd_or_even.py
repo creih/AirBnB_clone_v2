@@ -48,7 +48,9 @@ def umubare(n):
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def odd_even(n):
-    """ task 6 for odd or even number. """
+    """
+    task 6 for odd or even number rendered on html temp.
+    """
     e_or_o = "even" if n % 2 == 0 else "odd"
     val = (
         "bare" : n,
