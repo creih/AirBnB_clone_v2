@@ -19,7 +19,7 @@ def muhanda_1():
     return 'HBNB'
 
 
-@app.route('/C/<text>', strict_slashes=False)
+@app.route('/c/<text>', strict_slashes=False)
 def muhanda_2(text):
     """
     this responds to task 2 where a route portion is kept and displayed.
@@ -29,4 +29,4 @@ def muhanda_2(text):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
