@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""
 s module resolves task 1 per requirements more details in the readme file.
 """
 from flask import Flask, render_template
